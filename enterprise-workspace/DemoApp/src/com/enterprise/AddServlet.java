@@ -6,10 +6,15 @@ import java.io.PrintWriter;
 import javax.naming.ldap.Rdn;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+
+@WebServlet("/add")
 //when extends, AddServlet class becomes a servlet
 public class AddServlet extends HttpServlet {
 
@@ -40,22 +45,52 @@ public class AddServlet extends HttpServlet {
 		
 		int k = i + j;
 		
-		k=k*k;
-		/*
+		//set background colour
 		PrintWriter out = res.getWriter();
+		out.println("<html><body bgcolor='cyan'>");
+		
+		
+		//PrintWriter out = res.getWriter();
 		out.println("Result: "+k);
-		*/
+		
+		
 		
 		//to call another servlet from a servlet
 		//2 methods; Req Dispatcher and Redirect
 		//1. Request dispatcher
 		
 		//to pass k value to the new servlet
-		req.setAttribute("k", k);
+//		req.setAttribute("k", k);
+//		
+//		
+//		RequestDispatcher rsDispatcher  =  req.getRequestDispatcher("sq");
+//		rsDispatcher.forward(req, res);
 		
 		
-		RequestDispatcher rsDispatcher  =  req.getRequestDispatcher("sq");
-		rsDispatcher.forward(req, res);
+//		//2. SendRedirect
+//		res.sendRedirect("sq?k="+k); //session management : 1.URL Rewriting
+//		
+//		//another methods are: 2. Cookies, and 3. Sessions
+		
+//		
+//		//Sessions 
+//		HttpSession session = req.getSession();
+//		session.setAttribute("k", k);
+//		
+//		res.sendRedirect("sq");
+		
+		
+
+		
+		//Cookies
+		
+//		Cookie cookie =  new Cookie("k", k +""); //integer + "" = string
+//		res.addCookie(cookie);		
+//
+//		res.sendRedirect("sq");
+//		
+		
+		
 		
 	}
 	
