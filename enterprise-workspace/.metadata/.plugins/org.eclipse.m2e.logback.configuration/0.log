@@ -1,3 +1,13 @@
 2022-11-21 11:04:16,787 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is not available. Remote download required.
 2022-11-21 12:11:14,862 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2022-11-21 13:49:41,639 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-11-22 10:07:03,201 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-11-23 09:25:03,908 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-11-23 12:15:52,125 [Worker-113: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: trainingJSP:trainingJSP:0.0.1-SNAPSHOT @ C:\Users\Ajmi\eclipse-workspace\trainingJSP\trainingJSP\pom.xml.
+2022-11-23 12:15:53,875 [Worker-113: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /trainingJSP/src
+2022-11-23 12:15:53,876 [Worker-113: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Not adding source folder /trainingJSP/src/test/java because it overlaps with /trainingJSP/src
+2022-11-23 12:15:57,387 [Worker-113: Importing Maven projects] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 8 sec
+2022-11-23 12:15:58,253 [Worker-121: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-11-23 12:15:58,257 [Worker-121: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Ajmi\eclipse-workspace\trainingJSP\trainingJSP\src\main\resources
+2022-11-23 12:15:58,260 [Worker-121: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2022-11-23 12:15:58,263 [Worker-121: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Ajmi\eclipse-workspace\trainingJSP\trainingJSP\src\test\resources

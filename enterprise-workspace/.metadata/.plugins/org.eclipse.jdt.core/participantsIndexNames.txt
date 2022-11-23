@@ -1,3 +1,7 @@
 INDEX VERSION 1.131
+C:\Users\Ajmi\JSP-servlets\enterprise-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3068605458.index
+\trainingJSP\src
 C:\Users\Ajmi\JSP-servlets\enterprise-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\923981613.index
 \DemoApp\src
+C:\Users\Ajmi\JSP-servlets\enterprise-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3294754168.index
+\trainingJSP\src
