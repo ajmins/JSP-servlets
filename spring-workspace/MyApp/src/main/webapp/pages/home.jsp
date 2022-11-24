@@ -7,6 +7,8 @@
 <title>SpringBootDemo</title>
 </head>
 <body>
-	Welcome ${name} !
+	<!-- Welcome ${name} ! -->
+	<!-- object -->
+	Welcome ${obj.aid}, ${obj.aname }, ${obj.lang }
 </body>
 </html> 

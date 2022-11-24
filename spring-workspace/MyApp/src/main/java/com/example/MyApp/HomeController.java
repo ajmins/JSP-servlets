@@ -5,7 +5,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
@@ -34,16 +36,35 @@ public class HomeController {
 //		return "home"; 
 //	}
 	//with the help of spring, we can make the above code simpler
-	public String home(String name,HttpSession session) {
-		System.out.println("Hi" +name);
-		session.setAttribute("name", name);
-		return "home";
-		//so here, session object is used for holding the data and transfer it to home.jsp
-		//home is the view and 
-	}
+//	public String home(String name,HttpSession session) {
+//		System.out.println("Hi" +name);
+//		session.setAttribute("name", name);
+//		return "home";
+//		//so here, session object is used for holding the data and transfer it to home.jsp
+//		//home is the view and data is the model
+//		//so we can use the concept of ModelAndView instead of session
+//	}
+	//also we can use @RequestParam
+//	public String home(@RequestParam("name") String Myname,HttpSession session) {
+//	System.out.println("Hi" +Myname);
+//	session.setAttribute("name", Myname);
+//	return "home";
+//	}	
 	
 	//another method: model and view technique
-	
+//	public ModelAndView home(@RequestParam("name") String myName) {
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("name", myName);
+//		mv.setViewName("home");
+//		return mv;
+//	}
+	//we can send data as object as a whole (object of alien class)
+	public ModelAndView home(Alien alien) {
+	ModelAndView mv = new ModelAndView();
+	mv.addObject("obj", alien);
+	mv.setViewName("home");
+	return mv;
+}
 	
 	
 }
