@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+
+.error-body{
+	background-color: #fff4f2;
+}
+h1 {
+  color:red;
+}
+.user-body{
+	background-color: #FFFAF0;
+}
+.user-font{
+	color:#483D8B;
+}
