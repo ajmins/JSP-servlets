@@ -22,11 +22,11 @@ public class connect {
 			con=DriverManager.getConnection(url,user,pass);
 			Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * from users"); 
-            if (rs.next()) {
-                System.out.println(rs.getString("user_id"));
-                System.out.println(rs.getString("username"));
-                System.out.println(rs.getString("email"));
-            }
+//            while (rs.next()) {
+//                System.out.println(rs.getString("user_id"));
+//                System.out.println(rs.getString("username"));
+//                System.out.println(rs.getString("email"));
+//            }
 			System.out.println("Connecting to db...");
 		}
 		catch(ClassNotFoundException|SQLException e)

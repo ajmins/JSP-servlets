@@ -8,6 +8,6 @@
 <title>HomePage</title>
 </head>
 <body class ="user-body">
-<h1 class ="user-font">Hello user... <br> Welcome ${name} ! </h1>
+<h1>Hello user... <br> Welcome ${name} ! </h1>
 </body>
 </html>

@@ -2,13 +2,21 @@
 
 .error-body{
 	background-color: #fff4f2;
-}
-h1 {
-  color:red;
+	color:red;
 }
 .user-body{
 	background-color: #FFFAF0;
-}
-.user-font{
 	color:#483D8B;
+}
+
+.login-body{
+	background-color: #d5e3e2;
+	color:#483D8B;
+}
+
+table, th, td {
+  border: 2px solid;
+}
+.table{
+	border: 1px solid;
 }

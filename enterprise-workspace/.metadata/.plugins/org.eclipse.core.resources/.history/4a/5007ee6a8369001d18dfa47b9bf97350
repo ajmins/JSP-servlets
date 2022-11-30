@@ -1,7 +1,0 @@
-package com.enterprise;
-
-import javax.servlet.http.HttpServlet;
-
-public class SqServlet extends HttpServlet {
-
-}
