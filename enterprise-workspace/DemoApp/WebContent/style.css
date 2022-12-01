@@ -1,17 +1,25 @@
 @charset "ISO-8859-1";
-
+body{
+	
+	background-color: #d5e3e2;
+	text-align: center;
+	color:#074778 ;
+	margin-top: 25%;
+}
 .error-body{
-	background-color: #fff4f2;
+	
 	color:red;
 }
 .user-body{
-	background-color: #FFFAF0;
+	
 	color:#483D8B;
 }
 
 .login-body{
-	background-color: #d5e3e2;
+	
 	color:#483D8B;
+	text-align: center;
+	margin-top: 25%;
 }
 
 table, th, td {
@@ -19,4 +27,23 @@ table, th, td {
 }
 .table{
 	border: 1px solid;
+}
+
+.login-body{
+	background-color: #E5FDFA ;
+	color:#074778  ;
+}
+.register-body{
+	
+	background-color: #d5e3e2;
+	text-align: center;
+	color:#074778 ;
+	margin-top: 25%;
+}
+.btn{
+	background-color: white; 
+  	color: black; 
+  	border: 1px solid #008CBA;
+  	text-decoration: none;
+  	display: inline-block;
 }

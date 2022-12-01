@@ -87,7 +87,7 @@
   <source-attachment entry="C:/tools/apache-tomcat-9.0.69/lib/tomcat-util-scan.jar" runtime-id="Apache Tomcat v9.0">
     <attribute name="javadoc_location" value="https://tomcat.apache.org/tomcat-9.0-doc/api/"/>
   </source-attachment>
-  <source-attachment entry="C:/tools/apache-tomcat-9.0.69/lib/tomcat-util.jar" runtime-id="Apache Tomcat v9.0">
+  <source-attachment entry="C:/tools/apache-tomcat-9.0.69/lib/tomcat-util.jar" runtime-id="Apache Tomcat v9.0" source-attachment-path="C:/tools/apache-tomcat-9.0.69-src">
     <attribute name="javadoc_location" value="https://tomcat.apache.org/tomcat-9.0-doc/api/"/>
   </source-attachment>
   <source-attachment entry="C:/tools/apache-tomcat-9.0.69/lib/tomcat-websocket.jar" runtime-id="Apache Tomcat v9.0">

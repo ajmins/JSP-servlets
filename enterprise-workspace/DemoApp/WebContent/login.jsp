@@ -5,17 +5,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="/DemoApp/style.css" type="text/css">
 <title>Login</title>
 <style type="text/css">
 
-.login-body{
-	background-color: #E5FDFA ;
-	color:#074778  ;
-}
+
 
 </style>
 </head>
 <body class = login-body>
+	<h2>Login</h2>
 	<form action="Login" method = get>
 		<label>UserName: </label>
 		<input type="text" value="" name="username" placeholder="Username" /> <br> <br>
