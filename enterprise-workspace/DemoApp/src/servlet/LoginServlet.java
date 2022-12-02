@@ -8,8 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -29,6 +31,11 @@ import dao.connect;
 
 public class LoginServlet extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final String username = request.getParameter("username");
 		final String password = request.getParameter("password");
@@ -103,19 +110,13 @@ public class LoginServlet extends HttpServlet {
 					}
 				    request.setAttribute("userData", list);
 					request.getRequestDispatcher("adminHome.jsp").forward(request, response);
-				
-			
+						
 				}
-				
-	
 				
 			}
 			//adminlogin
 			//if case insesnsitive use myStr1.equalsIgnoreCase(myStr2))
-//			else if(username.equalsIgnoreCase(adminName) && password.equals(adminPwd)) {
-//				request.setAttribute("name", adminName);
-//				request.getRequestDispatcher("adminHome.jsp").forward(request, response);
-//			}
+
 
 			//error
 			else {
@@ -133,24 +134,13 @@ public class LoginServlet extends HttpServlet {
 
 	response.getWriter().close();
 	}
-	
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		final String username = request.getParameter("username");
-//		final String password = request.getParameter("password");
-//		
-//		ArrayList list=(ArrayList)request.getAttribute("data");
-//		Iterator itr=list.iterator();  
-//	    while(itr.hasNext()){  
-//	     Users u=(Users)itr.next();  
-//	     System.out.print("<br>"+u.getUser_id()+" "+u.getUsername()+" "+u.getPassword());  
-//	    }  
-//	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Connection con = null;
+		 Connection con = null;
 		 PreparedStatement ps = null;
 		 ResultSet rs = null;
 		
-		Users u = new Users();
+		 Users u = new Users();
 		 UserSql usql=new UserSql();
 		 String[] data=null;
 		 HttpSession session=request.getSession();
@@ -164,22 +154,55 @@ public class LoginServlet extends HttpServlet {
 			 data=usql.singleView(u);
 			 
 			 u.setUsername(data[1]);
-			
+			 String name =data[1];
+			 
+			 UserSql.DbConnection(request);
+			 ArrayList<Users> list=(ArrayList<Users>)request.getAttribute("data");
+			 Iterator<Users> itr=list.iterator(); 
+				
+			    while(itr.hasNext()){  
+			    Users userAll=itr.next();
+			    }
+			 
 			 session.setAttribute("username",u.getUsername());
 			
 			 session.setAttribute("password", u.getPassword());
 			 
-			 String checkData = "Select * from users where username=username";
 			 con = connect.getPostGresConnection();
-
-			ps = con.prepareStatement(checkData);
-			 System.out.println("roleid:"+checkData);
+			 String checkData = "Select * from users where username=?";
+			
+			ps = con.prepareStatement(checkData,ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			ps.setString(1, name);
+			rs = ps.executeQuery();
+			rs.last();
+			int role = rs.getInt(5);
+			System.out.println("roleid:"+role);
+			 if(role == 1) {
+				request.setAttribute("name", name);
+				request.setAttribute("userData", list);
+				request.getRequestDispatcher("adminHome.jsp").forward(request, response);
+			 }
+			 else if (role ==2) {
+				System.out.println("entered user setup");
+				request.setAttribute("name", name);
+				
+				String[] listUser=UserSql.singleView(u);
+//				ArrayList<Users> listUsers=new ArrayList<>();
+//				
+//				listUsers.add(u.getUsername().equals(name));
+//			    for (Users users : listUsers) {
+//					System.out.println("checking: "+users.toString());
+//				}
+				List<String> listUsers = Arrays.asList(listUser);
+				request.setAttribute("listUser", listUser);
+				RequestDispatcher rd=request.getRequestDispatcher("home.jsp");
+				rd.forward(request, response);
+			}
 			 
-			 RequestDispatcher rd=request.getRequestDispatcher("home.jsp");
-			 rd.forward(request, response);
 		 }
 		 else {
-			 response.sendRedirect("login.jsp");
+			 System.out.println("entered error setup");
+			 response.sendRedirect("error.jsp");
 			 session.setAttribute("ErrorMessage","Login Failed");
 		 }
 	}catch(SQLException|ClassNotFoundException ex)

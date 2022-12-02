@@ -9,5 +9,34 @@
 </head>
 <body class ="user-body">
 <h1>Hello user... <br> Welcome ${name} ! </h1>
+<table class = "table" id="tableView" style="display: inline-block;" >
+	<tr> 
+	<th>UserId</th>
+	<th>UserName</th>
+	<th>Password</th>
+	<th>Email</th>
+	
+	
+	<c:forEach items="${listUsers}" var="user" varStatus="loop">
+	   <!--  <c:out value="${user.user_id} ${user.username} "/><br /> -->
+ 	 ${user}
+		  
+	 </c:forEach>
+	 </table>
+<script>
+
+function show() {
+	
+	  var x = document.getElementById("tableView");
+	  if (x.style.display === "none") {
+	    x.style.display = "inline-block";
+	  } else {
+	    x.style.display = "none";
+	  }
+	  
+	}
+</script>
+
+
 </body>
 </html>

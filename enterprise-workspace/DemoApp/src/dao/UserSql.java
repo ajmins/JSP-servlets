@@ -164,7 +164,7 @@ public class UserSql extends HttpServlet{
 		}
 		return false;
 	}
-	public String[] singleView(Users u) throws ClassNotFoundException, SQLException {
+	public static String[] singleView(Users u) throws ClassNotFoundException, SQLException {
 		String data[] = null;
 		int count = 0;
 
