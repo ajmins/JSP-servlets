@@ -183,15 +183,15 @@ public class UserSql extends HttpServlet{
 		
 		
 		count = rs.getMetaData().getColumnCount();
-		System.out.println(count);
+		//System.out.println(count);
 		while (rs.next()) {
 			data = new String[count];
 			for (int i = 0; i < count; i++) {
 				data[i] = rs.getString(i + 1);
-				System.out.println(data[i]);
+				//System.out.println("list:"+data[i]);
 			}
 		}
-		System.out.println(data[count-1]);
+		//System.out.println(data[count-1]);
 		con.close();
 		return data;
 	}

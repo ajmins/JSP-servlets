@@ -38,7 +38,8 @@
 <script>
 
 function show() {
-	
+	 var object = "${userData}";
+	 console.log(object)
 	  var x = document.getElementById("tableView");
 	  if (x.style.display === "none") {
 	    x.style.display = "inline-block";

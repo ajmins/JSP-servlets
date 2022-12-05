@@ -9,19 +9,33 @@
 </head>
 <body class ="user-body">
 <h1>Hello user... <br> Welcome ${name} ! </h1>
+
+
 <table class = "table" id="tableView" style="display: inline-block;" >
 	<tr> 
 	<th>UserId</th>
 	<th>UserName</th>
 	<th>Password</th>
 	<th>Email</th>
+	</tr>
 	
-	
-	<c:forEach items="${listUsers}" var="user" varStatus="loop">
+	<tr>
+	<td>
+	${listUser[0]}
+	</td>
+	<td>
+	${listUser[1]}
+	</td>
+	<td>
+	${listUser[2]}
+	</td>
+	<td>
+	${listUser[3]}
+	</td>
+	</tr>
 	   <!--  <c:out value="${user.user_id} ${user.username} "/><br /> -->
- 	 ${user}
+ 	 <!-- ${user} -->
 		  
-	 </c:forEach>
 	 </table>
 <script>
 

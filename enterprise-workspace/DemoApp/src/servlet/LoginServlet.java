@@ -194,11 +194,14 @@ public class LoginServlet extends HttpServlet {
 //					System.out.println("checking: "+users.toString());
 //				}
 				List<String> listUsers = Arrays.asList(listUser);
-				request.setAttribute("listUser", listUser);
+				for (String string : listUsers) {
+					System.out.println("list:"+string);
+				}
+				request.setAttribute("listUser", listUsers);
 				RequestDispatcher rd=request.getRequestDispatcher("home.jsp");
 				rd.forward(request, response);
 			}
-			 
+			
 		 }
 		 else {
 			 System.out.println("entered error setup");
