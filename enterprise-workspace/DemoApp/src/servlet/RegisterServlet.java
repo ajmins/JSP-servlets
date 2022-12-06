@@ -20,6 +20,7 @@ public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Registration entered");
 		UserSql uSql =new UserSql();
 		Users u = new Users();
 		int result = 0;
@@ -46,5 +47,6 @@ public class RegisterServlet extends HttpServlet {
 		} else {
 			response.sendRedirect("index.jsp");
 		}
+		System.out.println("Registration exited");
 	}
 }

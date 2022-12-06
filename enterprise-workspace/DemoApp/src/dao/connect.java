@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 
 //DBConnect file
-public class connect {
+public class Connect {
 
 	public static Connection getPostGresConnection()
 	{

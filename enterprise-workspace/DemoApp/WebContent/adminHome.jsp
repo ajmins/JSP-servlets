@@ -12,7 +12,7 @@
 <body class ="user-body">
 <h1>Hello adminUser... <br> Welcome ${name} ! </h1>
 
-<a href="register.jsp" target="_self" class="btn2" >Register New !</a>
+<a href="register.jsp" target="_self" class="a-link" >Register New !</a>
 <button onclick='show();'  class="btn2">View Users</button>
 
 
@@ -22,16 +22,21 @@
 	<th>UserName</th>
 	<th>Email</th>
 	<th>Password</th>
+	<th>Action</th>
+	
+	
 	</tr>
 	
-	<c:forEach items="${userData}" var="user">
-	   <!--  <c:out value="${user.user_id} ${user.username} "/><br /> -->
-		 
+	<c:forEach items="${userData}" var="user">		 
 			<tr>
 		    <td>${user.user_id}</td>
 		    <td>${user.username}</td>
 		    <td>${user.getEmail()}</td><!-- we can use getters also -->
 		    <td>${user.password}</td>
+		    <td>
+		    	<a class="btn" href="edit.jsp" target="_self">Edit</a>
+		    	<a class="btn" href="Delete?userId=${user.user_id}" target="_self" id="userId">Delete</a>
+		    </td>
 		  </tr>
 	 </c:forEach>
 	 </table>

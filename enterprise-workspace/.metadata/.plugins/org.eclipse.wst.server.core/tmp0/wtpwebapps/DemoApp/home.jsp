@@ -9,9 +9,15 @@
 </head>
 <body class ="user-body">
 <h1>Hello user... <br> Welcome ${name} ! </h1>
+<div>
 
+<form action="Profile" method="post">
+	<input type="submit" value="Edit Profile" class=btn2>
+</form>
+<button onclick='show();'  class="btn2">View My Profile</button>
+</div>
 
-<table class = "table" id="tableView" style="display: inline-block;" >
+<table class = "table" id="tableView" style="display: none;" >
 	<tr> 
 	<th>UserId</th>
 	<th>UserName</th>
@@ -38,9 +44,8 @@
 		  
 	 </table>
 <script>
-
 function show() {
-	
+
 	  var x = document.getElementById("tableView");
 	  if (x.style.display === "none") {
 	    x.style.display = "inline-block";
@@ -50,7 +55,6 @@ function show() {
 	  
 	}
 </script>
-
 
 </body>
 </html>

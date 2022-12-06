@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,8 +11,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Users;
+import dao.Connect;
 import dao.UserSql;
-import dao.connect;
+
 
 /**
  * Servlet implementation class Login
@@ -44,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 		HashMap<String,String[]> userCredentials = new HashMap<String, String[]>();//Creating HashMap 
 		
 		try {
-			Connection resCon=  connect.getPostGresConnection();
+			Connection resCon=  Connect.getPostGresConnection();
 			Statement st = resCon.createStatement();
 	        ResultSet rs = st.executeQuery("SELECT * from users"); 
 	        while (rs.next()) {
@@ -139,7 +137,7 @@ public class LoginServlet extends HttpServlet {
 		 Connection con = null;
 		 PreparedStatement ps = null;
 		 ResultSet rs = null;
-		
+		 System.out.println("Login entered");
 		 Users u = new Users();
 		 UserSql usql=new UserSql();
 		 String[] data=null;
@@ -168,7 +166,7 @@ public class LoginServlet extends HttpServlet {
 			
 			 session.setAttribute("password", u.getPassword());
 			 
-			 con = connect.getPostGresConnection();
+			 con = Connect.getPostGresConnection();
 			 String checkData = "Select * from users where username=?";
 			
 			ps = con.prepareStatement(checkData,ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -212,5 +210,7 @@ public class LoginServlet extends HttpServlet {
 		 {
 			ex.printStackTrace();
 		 }
+		 System.out.println("Login exited");
 		 }
+	
 }
