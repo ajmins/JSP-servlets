@@ -27,30 +27,25 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		HttpSession session=request.getSession();
 		
 		u.setUsername((String) request.getParameter("username"));
-		System.out.println("Check1"+request.getParameter("username"));
-		
 		u.setEmail((String) request.getParameter("email"));
-		System.out.println("Check1"+request.getParameter("email"));
-		
 		u.setPassword((String) request.getParameter("password"));
-		System.out.println("Check1"+request.getParameter("password"));
 				
 		try {
 			result=uSql.updateData(u);
-			
 			if(result==0)
 			{
-				
 				RequestDispatcher rd = request.getRequestDispatcher("adminHome.jsp");
 				rd.forward(request, response);
 			}
 			else {
 				PrintWriter out=response.getWriter();
-				out.println("Delete Failed");
+				out.println("Update Success");
+				response.sendRedirect("login.jsp");
 			}
 		}
 		catch(SQLException ex)
 		{
+			System.out.println("Update failed");
 			ex.printStackTrace();
 		}
 		System.out.println("Update exited");

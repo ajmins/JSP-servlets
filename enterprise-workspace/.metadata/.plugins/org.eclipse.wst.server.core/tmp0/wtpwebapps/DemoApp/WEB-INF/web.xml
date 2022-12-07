@@ -55,4 +55,14 @@
   </servlet-mapping>
 
 
+     <!-- Delete -->
+  <servlet>
+  	<servlet-name>Edit</servlet-name>
+  	<servlet-class>servlet.EditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Edit</servlet-name>
+  	<url-pattern>/Edit</url-pattern>
+  </servlet-mapping>
+
 </web-app>

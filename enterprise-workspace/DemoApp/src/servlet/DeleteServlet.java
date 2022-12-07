@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -26,12 +27,18 @@ public class DeleteServlet extends HttpServlet{
 		HttpSession session=request.getSession();
 		String id =request.getParameter("userId");
 		System.out.println("idToDelete: "+id);
+		PrintWriter out =new PrintWriter(System.out);    
 		try {
 			result=uSql.deleteData(id);
+			System.out.println("Deletion successfull");
+			response.sendRedirect("adminHome.jsp");
+
 		} 
 		catch(SQLException ex)
 		{
+			System.out.println("Deletion failed");
 			ex.printStackTrace();
+			
 		}
 		
 	}

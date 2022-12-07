@@ -34,7 +34,7 @@
 		    <td>${user.getEmail()}</td><!-- we can use getters also -->
 		    <td>${user.password}</td>
 		    <td>
-		    	<a class="btn" href="edit.jsp" target="_self">Edit</a>
+		    	<a class="btn" href="Edit?userId=${user.user_id}" target="_self" id="userId">Edit</a>
 		    	<a class="btn" href="Delete?userId=${user.user_id}" target="_self" id="userId">Delete</a>
 		    </td>
 		  </tr>

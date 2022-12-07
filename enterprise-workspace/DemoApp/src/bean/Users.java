@@ -1,6 +1,6 @@
 package bean;
 
-//table 
+//table object class
 public class Users {  
 private int user_id;
 int role_id;  

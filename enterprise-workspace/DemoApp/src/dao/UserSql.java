@@ -12,18 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 
 import bean.Users;
 
-//Db utility
+/*
+ * DB utility class
+ * It contains all the functions for CRUD Operation for admin and normal users
+ */
 public class UserSql extends HttpServlet{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	static Connection con = null;
 	static PreparedStatement ps = null;
 	static ResultSet rs = null;
 
 	public static  int DbConnection(HttpServletRequest request) {
-//		ServletContextEvent e = new ServletContextEvent((ServletContext)e);
 		
 		String driver="org.postgresql.Driver";
 		String url="jdbc:postgresql://localhost:5432/postgres";
@@ -131,17 +131,15 @@ public class UserSql extends HttpServlet{
 	public boolean checkUser(Users u) throws SQLException {
 		System.out.println("NAme" +u.getUsername());
 		String checkData = "Select * from users where username=?";
+		
 		con = Connect.getPostGresConnection();
-
 		ps = con.prepareStatement(checkData);
 		ps.setString(1, u.getUsername());
-		//ps.getpa
 		rs = ps.executeQuery();
 
 		if (!rs.next()) {
 			System.out.println("true");
-			return true;
-			
+			return true;	
 		}
 		System.out.println("false");
 		return false;
@@ -149,39 +147,29 @@ public class UserSql extends HttpServlet{
 	//login user
 	public boolean userLogin(Users u) throws SQLException {
 		String checkData = "Select * from users where username=? and password=?";
+		
 		con = Connect.getPostGresConnection();
-
 		ps = con.prepareStatement(checkData);
 		ps.setString(1, u.getUsername());
 		ps.setString(2, u.getPassword());
-
 		rs = ps.executeQuery();
-		
-		
 		
 		if (rs.next()) {
 			return true;
 		}
 		return false;
 	}
+	//to get details of a particular user
 	public static String[] singleView(Users u) throws ClassNotFoundException, SQLException {
 		String data[] = null;
 		int count = 0;
-
 		con = Connect.getPostGresConnection();
-
 		String sql = "select * from users where username=? and password=?";
-
+		
 		ps = con.prepareStatement(sql);
-
 		ps.setString(1, u.getUsername());
 		ps.setString(2, u.getPassword());
-		
-
 		rs = ps.executeQuery();
-
-		
-		
 		count = rs.getMetaData().getColumnCount();
 		System.out.println(count);
 		while (rs.next()) {
@@ -191,42 +179,67 @@ public class UserSql extends HttpServlet{
 				System.out.println("list:"+data[i]);
 			}
 		}
-		
 		con.close();
 		return data;
 	}
+	//update a user details from user side
 	public int updateData(Users u) throws SQLException {
 		int result = 0;
 		String updateData = "update users set password=?,email=? where username=?";
+		
 		con = Connect.getPostGresConnection();
-
 		ps = con.prepareStatement(updateData);
 		ps.setString(1, u.getPassword());
-		System.out.println("passwordCheck"+u.getPassword());
 		ps.setString(2, u.getEmail());
-		System.out.println("EmailCheck"+u.getEmail());
 		ps.setString(3, u.getUsername());
-		System.out.println("UserName"+u.getUsername());
 		result = ps.executeUpdate();
-
 		con.close();
 		return result;
 	}
 	public int deleteData(String id2) throws SQLException {
 		int result = 0;
+		String deleteData = "delete * from users where user_id=?";
 		
-		//String id = request.getParameter("id");
-		//System.out.println("idToDelete: "+id);
-		String deleteData = "delete from users where user_id=?";
 		con = Connect.getPostGresConnection();
-
 		ps = con.prepareStatement(deleteData);
-
 		ps.setInt(1, Integer.parseInt(id2));
-		
 		result = ps.executeUpdate();
-
 		con.close();
 		return result;
+	}
+//	public int editData(String id2, Users u) throws SQLException {
+//		int result = 0;
+//		String editData = "update users set password=?,email=? where user_id=?";
+//		
+//		con = Connect.getPostGresConnection();
+//		ps = con.prepareStatement(editData);
+//		ps.setString(1, u.getPassword());
+//		ps.setString(2, u.getEmail());
+//		ps.setInt(3, Integer.parseInt(id2));
+//		result = ps.executeUpdate();
+//		con.close();
+//		return result;
+//	}
+	public static String[] singleUserIDView(Users u, String id) throws ClassNotFoundException, SQLException {
+		String data[] = null;
+		int count = 0;
+		con = Connect.getPostGresConnection();
+		String sql = "select * from users where user_id=?";
+		
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, Integer.parseInt(id));
+		
+		rs = ps.executeQuery();
+		count = rs.getMetaData().getColumnCount();
+		System.out.println(count);
+		while (rs.next()) {
+			data = new String[count];
+			for (int i = 0; i < count; i++) {
+				data[i] = rs.getString(i + 1);
+				System.out.println("list:"+data[i]);
+			}
+		}
+		con.close();
+		return data;
 	}
 }
