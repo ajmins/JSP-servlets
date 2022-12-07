@@ -14,37 +14,36 @@
 
 <a href="register.jsp" target="_self" class="a-link" >Register New !</a>
 <button onclick='show();'  class="btn2">View Users</button>
-
-
+<a href="login.jsp" class="btn2">Back</a>
 <table class = "table" id="tableView" style="display: none;" >
 	<tr> 
-	<th>UserId</th>
-	<th>UserName</th>
-	<th>Email</th>
-	<th>Password</th>
-	<th>Action</th>
-	
-	
+		<th>UserId</th>
+		<th>UserName</th>
+		<th>Email</th>
+		<th>Password</th>
+		<th>Action</th>
 	</tr>
-	
 	<c:forEach items="${userData}" var="user">		 
 			<tr>
-		    <td>${user.user_id}</td>
-		    <td>${user.username}</td>
-		    <td>${user.getEmail()}</td><!-- we can use getters also -->
-		    <td>${user.password}</td>
-		    <td>
-		    	<a class="btn" href="Edit?userId=${user.user_id}" target="_self" id="userId">Edit</a>
-		    	<a class="btn" href="Delete?userId=${user.user_id}" target="_self" id="userId">Delete</a>
-		    </td>
+			    <td>${user.user_id}</td>
+			    <td>${user.username}</td>
+			    <td>${user.getEmail()}</td><!-- we can use getters also -->
+			    <td>${user.password}</td>
+			    <td>
+			    	<a class="btn" href="Edit?userId=${user.user_id}" target="_self" id="userId">Edit</a>
+			    	<a class="btn" href="Delete?userId=${user.user_id}" target="_self" id="userId">Delete</a>
+			    </td>
 		  </tr>
 	 </c:forEach>
-	 </table>
+</table>
+	 
 <script>
-
+/*
+ * Script for displaying table from a button click
+ */
 function show() {
-	 var object = "${userData}";
-	 console.log(object)
+	 //var object = "${userData}";
+	 //console.log(object)
 	  var x = document.getElementById("tableView");
 	  if (x.style.display === "none") {
 	    x.style.display = "inline-block";

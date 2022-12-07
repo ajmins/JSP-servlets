@@ -7,6 +7,7 @@ function show(nr) {
 document.getElementById("table"+nr).style.display="block";
 }
  */
+ 
 function show() {
   var x = document.getElementById("tableView");
   if (x.style.display === "none") {

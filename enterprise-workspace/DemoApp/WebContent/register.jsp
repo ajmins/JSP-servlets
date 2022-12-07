@@ -6,9 +6,7 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="/DemoApp/style.css" type="text/css">
 <title>Registration</title>
-<style>
 
-</style>
 </head>
 <body>
 
@@ -33,6 +31,7 @@
 		<br> 	
 		<input type="submit" value="Register" class = "btn">  &nbsp &nbsp
 		<input type="reset" value="Reset" class = "btn">
+		<a href="index.jsp" class="btn">Back</a>
 	</form>
 </body>
 </html>

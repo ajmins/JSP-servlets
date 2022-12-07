@@ -12,20 +12,17 @@ import javax.servlet.http.HttpSession;
 
 import bean.Users;
 import dao.UserSql;
-
+/**
+ * Profile is set for normal user. 
+ */
 public class ProfileServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
 		
-		UserSql uSql =new UserSql();
 		Users u = new Users();
-		System.out.println("Profile entered");
 		String[] data = null;
 		HttpSession session = request.getSession();
 
@@ -35,7 +32,6 @@ public class ProfileServlet extends HttpServlet {
 		
 		try {
 			data = UserSql.singleView(u);
-			
 			u.setUser_id(Integer.parseInt(data[0]));
 			u.setUsername(data[1]);
 			u.setPassword(data[2]);

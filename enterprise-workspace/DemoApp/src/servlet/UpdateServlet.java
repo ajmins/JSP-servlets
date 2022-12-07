@@ -14,17 +14,18 @@ import javax.servlet.http.HttpSession;
 import bean.Users;
 import dao.UserSql;
 
+/*
+ * Update Servlet is used for updating user details, can be used by both user and admin.
+ * User can use this to edit their own details, Admin can use to edit other user's details
+ */
 public class UpdateServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
-protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Update entered");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		UserSql uSql =new UserSql();
 		Users u = new Users();
 		int result=0;
-		String[] data=null;
-		HttpSession session=request.getSession();
 		
 		u.setUsername((String) request.getParameter("username"));
 		u.setEmail((String) request.getParameter("email"));

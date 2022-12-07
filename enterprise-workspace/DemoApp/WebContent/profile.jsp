@@ -9,22 +9,22 @@
 </head>
 <body>
 
-<form action="Update" method="post">
-<h2>Edit Profile</h2>
-<table style="border: 1px solid black">
-<tr>
-<th>Username</th>
-<th>Email</th>
-<th>Password</th>
-</tr>
-<tr>
-<td><input type="text" name="username" value="${username}" readonly></td>
-<td><input type="email" name="email" value="${email}"></td>
-<td><input type="text" name="password" value="${password}"></td>
-</tr>
-</table><br>
-<input type="submit" value="Update" class="btn">
-</form>
+	<form action="Update" method="post">
+	<h2>Edit Profile</h2>
+	<table style="border: 1px solid black">
+		<tr>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Password</th>
+		</tr>
+		<tr>
+			<td><input type="text" name="username" value="${username}" readonly></td>
+			<td><input type="email" name="email" value="${email}"></td>
+			<td><input type="text" name="password" value="${password}"></td>
+		</tr>
+	</table><br>
+		<input type="submit" value="Update" class="btn">
+	</form>
 <a href="home.jsp" target="_self" style="background-color: white; 
   	color: black; 
   	border: 1px solid #008CBA;

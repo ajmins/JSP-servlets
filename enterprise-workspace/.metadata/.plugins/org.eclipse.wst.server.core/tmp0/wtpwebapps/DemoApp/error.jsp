@@ -8,6 +8,6 @@
 <title>Error</title>
 </head>
 <body class = "error-body">
-<h1>Error page reached!!!</h1>
+	<h1>Error page reached!!!</h1>
 </body>
 </html>

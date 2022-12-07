@@ -19,30 +19,27 @@
 
 <table class = "table" id="tableView" style="display: none;" >
 	<tr> 
-	<th>UserId</th>
-	<th>UserName</th>
-	<th>Password</th>
-	<th>Email</th>
+		<th>UserId</th>
+		<th>UserName</th>
+		<th>Password</th>
+		<th>Email</th>
 	</tr>
-	
 	<tr>
-	<td>
-	${listUser[0]}
-	</td>
-	<td>
-	${listUser[1]}
-	</td>
-	<td>
-	${listUser[2]}
-	</td>
-	<td>
-	${listUser[3]}
-	</td>
+		<td>
+			${listUser[0]}
+		</td>
+		<td>
+			${listUser[1]}
+		</td>
+		<td>
+			${listUser[2]}
+		</td>
+		<td>
+			${listUser[3]}
+		</td>
 	</tr>
-	   <!--  <c:out value="${user.user_id} ${user.username} "/><br /> -->
- 	 <!-- ${user} -->
-		  
 	 </table>
+	 
 <script>
 function show() {
 

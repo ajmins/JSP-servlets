@@ -11,23 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UserSql;
-
+/**
+ * This controller is used to delete a user based on the user_id passed in the URL
+ * And can be used by admin side login only
+ */
 public class DeleteServlet extends HttpServlet{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Delete entered");
 		UserSql uSql =new UserSql();
 		int result=0;
-		String[] data=null;
-		HttpSession session=request.getSession();
 		String id =request.getParameter("userId");
-		System.out.println("idToDelete: "+id);
-		PrintWriter out =new PrintWriter(System.out);    
 		try {
 			result=uSql.deleteData(id);
 			System.out.println("Deletion successfull");

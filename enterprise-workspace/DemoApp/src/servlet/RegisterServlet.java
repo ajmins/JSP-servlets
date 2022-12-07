@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Users;
 import dao.UserSql;
-
+/*
+ * Register Servlet is used for Registering user. 
+ * Access is allowed to admin user alone.
+ */
 public class RegisterServlet extends HttpServlet {
  
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +24,6 @@ public class RegisterServlet extends HttpServlet {
 		UserSql uSql =new UserSql();
 		Users u = new Users();
 		int result = 0;
-//		int returnLastInsertId =UserSql.DbConnection(request);
 	
 		u.setUsername(request.getParameter("username"));
 		u.setEmail(request.getParameter("email"));
@@ -32,7 +31,6 @@ public class RegisterServlet extends HttpServlet {
 		String roleNumber =request.getParameter("role");
 		
 		u.setRole_id(Integer.parseInt(roleNumber));
-	    System.out.print("\n"+u.getUser_id()+" "+u.getUsername()+" "+u.getPassword()+" "+u.getEmail()+" "+u.getRole_id());  
 
 		try {
 			if (uSql.checkUser(u)) {
