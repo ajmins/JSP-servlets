@@ -26,7 +26,7 @@ public class DeleteServlet extends HttpServlet{
 		try {
 			result=uSql.deleteData(id);
 			System.out.println("Deletion successfull");
-			response.sendRedirect("adminHome.jsp");
+			response.sendRedirect("login.jsp");
 
 		} 
 		catch(SQLException ex)

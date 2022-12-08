@@ -173,7 +173,7 @@ public class UserSql extends HttpServlet{
 	//delete a user based on user_id
 	public int deleteData(String id2) throws SQLException {
 		int result = 0;
-		String deleteData = "delete * from users where user_id=?";
+		String deleteData = "delete from users where user_id=?";
 		
 		con = Connect.getPostGresConnection();
 		ps = con.prepareStatement(deleteData);
