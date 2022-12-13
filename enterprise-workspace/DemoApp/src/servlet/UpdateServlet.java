@@ -9,9 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import bean.Users;
+import bean.UsersTable;
 import dao.UserSql;
 
 /*
@@ -24,7 +23,7 @@ public class UpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserSql uSql =new UserSql();
-		Users u = new Users();
+		UsersTable u = new UsersTable();
 		int result=0;
 		
 		u.setUsername((String) request.getParameter("username"));

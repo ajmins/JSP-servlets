@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.Users;
+import bean.UsersTable;
 import dao.UserSql;
 
 /**
@@ -23,7 +23,7 @@ public class EditServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		Users u = new Users();
+		UsersTable u = new UsersTable();
 		String[] data=null;
 		String id =request.getParameter("userId");
 		try {

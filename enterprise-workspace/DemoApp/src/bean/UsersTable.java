@@ -1,7 +1,8 @@
 package bean;
 
 //table object class
-public class Users {  
+
+public class UsersTable {  
 private int user_id;
 int role_id;  
 private String username,password,email;

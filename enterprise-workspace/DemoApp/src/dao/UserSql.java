@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,14 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
-import bean.Users;
+import bean.UsersTable;
 
 /*
  * DB utility class
- * It contains all the functions for CRUD Operation for admin and normal users
+ * It contains all the functions for CRUD Operation for admin and normal userstable
  */
 public class UserSql extends HttpServlet{
 
@@ -32,19 +34,19 @@ public class UserSql extends HttpServlet{
 		String pass ="123456789";
 		int returnLastInsertId = 0;
 		{
-			ArrayList<Users> userList=new ArrayList <Users>();  
+			ArrayList<UsersTable> userList=new ArrayList <UsersTable>();  
 		try {
 	        Class.forName("org.postgresql.Driver");
 	        con=DriverManager.getConnection(url,user,pass);
 	        System.out.println("Opened database successfully");
 
-	        ps = con.prepareStatement(" SELECT * from users");
+	        ps = con.prepareStatement(" SELECT * from userstable");
 	        System.out.println("connection statement successfully");    
 
 	        rs = ps.executeQuery();  
 	        int i =0;
 	        while(rs.next()){  
-		         Users u=new Users(); //Columns are numbered from 1.
+		         UsersTable u=new UsersTable(); //Columns are numbered from 1.
 		       
 		         u.setUser_id(rs.getInt(1));  
 		         u.setUsername(rs.getString(2));  
@@ -69,12 +71,12 @@ public class UserSql extends HttpServlet{
 	}
 	
 	//insert data from Registeration page
-	public int insertData(Users u) throws SQLException{
+	public int insertData(UsersTable u) throws SQLException{
 		int result = 0;
 		try {
-			String insertData = "insert into users values(?,?,?,?,?)";
-			con = Connect.getPostGresConnection();
-			String getId ="select user_id from users order by user_id desc";
+			String insertData = "insert into userstable values(?,?,?,?,?)";
+			con = Connect.getPostGresConnection(null, null);
+			String getId ="select user_id from userstable order by user_id desc";
 			ps = con.prepareStatement(getId, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			//TYPE_SCROLL_SENSITIVE allows the cursor movement forward or backward to rs (the result set is scrollable and sensitive to database changes.)
 			//setting result set concurrency values as CONCUR_UPDATABLE: the result set can be used to update the database.
@@ -99,10 +101,10 @@ public class UserSql extends HttpServlet{
 	}
 	
 	//checking if user is present
-	public boolean checkUser(Users u) throws SQLException {
-		String checkData = "Select * from users where username=?";
+	public boolean checkUser(UsersTable u) throws SQLException, ServletException, IOException {
+		String checkData = "Select * from userstable where username=?";
 		
-		con = Connect.getPostGresConnection();
+		con = Connect.getPostGresConnection(null, null);
 		ps = con.prepareStatement(checkData);
 		ps.setString(1, u.getUsername());
 		rs = ps.executeQuery();
@@ -116,10 +118,10 @@ public class UserSql extends HttpServlet{
 	}
 	
 	//login user
-	public boolean userLogin(Users u) throws SQLException {
-		String checkData = "Select * from users where username=? and password=?";
+	public boolean userLogin(UsersTable u) throws SQLException, ServletException, IOException {
+		String checkData = "Select * from userstable where username=? and password=?";
 		
-		con = Connect.getPostGresConnection();
+		con = Connect.getPostGresConnection(null, null);
 		ps = con.prepareStatement(checkData);
 		ps.setString(1, u.getUsername());
 		ps.setString(2, u.getPassword());
@@ -132,11 +134,11 @@ public class UserSql extends HttpServlet{
 	}
 	
 	//to get details of a particular user
-	public static String[] singleView(Users u) throws ClassNotFoundException, SQLException {
+	public static String[] singleView(UsersTable u) throws ClassNotFoundException, SQLException, ServletException, IOException {
 		String data[] = null;
 		int count = 0;
-		con = Connect.getPostGresConnection();
-		String sql = "select * from users where username=? and password=?";
+		con = Connect.getPostGresConnection(null, null);
+		String sql = "select * from userstable where username=? and password=?";
 		
 		ps = con.prepareStatement(sql);
 		ps.setString(1, u.getUsername());
@@ -156,11 +158,11 @@ public class UserSql extends HttpServlet{
 	}
 	
 	//update a user details from user side, and also from admin side
-	public int updateData(Users u) throws SQLException {
+	public int updateData(UsersTable u) throws SQLException, ServletException, IOException {
 		int result = 0;
-		String updateData = "update users set password=?,email=? where username=?";
+		String updateData = "update userstable set password=?,email=? where username=?";
 		
-		con = Connect.getPostGresConnection();
+		con = Connect.getPostGresConnection(null, null);
 		ps = con.prepareStatement(updateData);
 		ps.setString(1, u.getPassword());
 		ps.setString(2, u.getEmail());
@@ -171,11 +173,11 @@ public class UserSql extends HttpServlet{
 	}
 	
 	//delete a user based on user_id
-	public int deleteData(String id2) throws SQLException {
+	public int deleteData(String id2) throws SQLException, ServletException, IOException {
 		int result = 0;
-		String deleteData = "delete from users where user_id=?";
+		String deleteData = "delete from userstable where user_id=?";
 		
-		con = Connect.getPostGresConnection();
+		con = Connect.getPostGresConnection(null, null);
 		ps = con.prepareStatement(deleteData);
 		ps.setInt(1, Integer.parseInt(id2));
 		result = ps.executeUpdate();
@@ -184,11 +186,11 @@ public class UserSql extends HttpServlet{
 	}
 	
 	//getting details of a particular user from admin side login ; used for updating user from admin side
-	public static String[] singleUserIDView(Users u, String id) throws ClassNotFoundException, SQLException {
+	public static String[] singleUserIDView(UsersTable u, String id) throws ClassNotFoundException, SQLException, ServletException, IOException {
 		String data[] = null;
 		int count = 0;
-		con = Connect.getPostGresConnection();
-		String sql = "select * from users where user_id=?";
+		con = Connect.getPostGresConnection(null, null);
+		String sql = "select * from userstable where user_id=?";
 		
 		ps = con.prepareStatement(sql);
 		ps.setInt(1, Integer.parseInt(id));

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.Users;
+import bean.UsersTable;
 import dao.UserSql;
 /**
  * Profile is set for normal user. 
@@ -22,7 +22,7 @@ public class ProfileServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
 		
-		Users u = new Users();
+		UsersTable u = new UsersTable();
 		String[] data = null;
 		HttpSession session = request.getSession();
 

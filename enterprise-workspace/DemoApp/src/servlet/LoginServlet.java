@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.Users;
+import bean.UsersTable;
 import dao.Connect;
 import dao.UserSql;
 
@@ -35,29 +35,31 @@ public class LoginServlet extends HttpServlet {
 		 Connection con = null;
 		 PreparedStatement ps = null;
 		 ResultSet rs = null;
-		 System.out.println("Login entered");
-		 Users u = new Users();
+		
+		 UsersTable u = new UsersTable();
 		 UserSql usql=new UserSql();
 		 String[] data=null;
 		 HttpSession session=request.getSession();
 		 u.setUsername(request.getParameter("username"));
 		 u.setPassword(request.getParameter("password"));
-		 
+		 con = Connect.getPostGresConnection(request, response);
+		 System.out.println("Login entered");
 		 try
 		 {
 		 if(usql.userLogin(u))
 		 {
+			 
 				data=UserSql.singleView(u);
 				u.setUsername(data[1]);
 				String name =data[1];
 				UserSql.DbConnection(request);
-				ArrayList<Users> list=(ArrayList<Users>)request.getAttribute("data");
+				ArrayList<UsersTable> list=(ArrayList<UsersTable>)request.getAttribute("data");
 				 
 				session.setAttribute("username",u.getUsername());
 				session.setAttribute("password", u.getPassword());
-				con = Connect.getPostGresConnection();
+				
 				 
-				String checkData = "Select * from users where username=?";
+				String checkData = "Select * from userstable where username=?";
 			
 				ps = con.prepareStatement(checkData,ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 				ps.setString(1, name);

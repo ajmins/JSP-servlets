@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Users;
+import bean.UsersTable;
 import dao.UserSql;
 /*
  * Register Servlet is used for Registering user. 
@@ -22,7 +22,7 @@ public class RegisterServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Registration entered");
 		UserSql uSql =new UserSql();
-		Users u = new Users();
+		UsersTable u = new UsersTable();
 		int result = 0;
 	
 		u.setUsername(request.getParameter("username"));
