@@ -15,3 +15,12 @@ WHERE
 
 
 DROP TABLE students;
+
+DROP TABLE role;
+select * from role;
+
+DELETE
+FROM
+    role
+WHERE
+    user_name = 'admin';
