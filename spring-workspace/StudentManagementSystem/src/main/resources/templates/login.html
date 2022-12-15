@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
@@ -14,17 +14,17 @@
 			<h2>Login</h2>
 		</div>
 		<div class = "col-md-6 mt-4">
-			<form>
+			<form th:action="@{/userLogin}" th:object="${userRole}" method="post">
 			  <div class="form-group">
-			    <label for="exampleInputEmail1">Email address</label>
-			    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+			    <label for="exampleInputUN1">User Name</label>
+			    <input type="text" class="form-control" id="exampleInputUN1" placeholder="Enter username" th:field="*{userName}">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Password</label>
-			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" th:field="*{password}">
 			  </div>
 
-			  <button type="submit" class="btn btn-primary">Submit</button>
+			  <button type="submit" class="btn btn-success">Submit</button>
 			</form>
 		</div>
 
