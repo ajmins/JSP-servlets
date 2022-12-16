@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Profile</title>
@@ -9,16 +9,29 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar bg-info text-white justify-content-end " style="background-color: #e3f2fd;">
   <!-- Navbar content -->
-    <a th:href ="@{/profile}" class="btn btn-light navbar-brand">My Details</a>
+
    	<a th:href ="@{/loginUser}" class="btn btn-light navbar-brand">Logout</a>
 </nav>
 <div class ="container">
 
-		<div class = "row">
-			<h2> Welcome user</h2>
-
+		<div class = "row" style="padding-left:24em!important">
+			<h2> Welcome <span th:text="${userName}">userName</span></h2>
+		</div>
+		<div class="row" style="margin-top:-2.5rem;padding-left:47em!important">
+			<img th:src="@{images/img1.png}" alt="Media Resource" class="ml-2 mt-1" style="margin-left: -33.5rem!important; margin-top: 3.25rem!important;">
+		
+		</div>
+		<div class = "row" style="margin-top:2rem;padding-left:25em!important">
+				<form th:action="@{/viewStudent}" method="get" >
+				  <div class="form-group">
+				    <label for="enteredName">Please enter your name to view details</label>
+				    <input type="text" class="form-control" id="enteredName" placeholder="Enter username">
+				  </div>
+	
+				  <button type="submit" class="btn btn-success">Submit</button>
+				</form>
 		</div>
 
 </div>

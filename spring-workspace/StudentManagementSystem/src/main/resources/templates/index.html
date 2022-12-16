@@ -9,13 +9,25 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<div class ="container"> <br>
- 	<h1>Welcome to Home Page</h1>
- 	  
-	   <form th:action="@{/loginUser}" >
-	        <input type="submit" class="btn btn-info" value="Login" />
+<nav class="navbar bg-info text-white justify-content-end " style="background-color: #e3f2fd;">
+  <!-- Navbar content -->
+
+</nav>
+<div class ="container mx-auto" style="width: 51em; margin-top: 2em!important;"> <br>
+ 	<h1>Welcome to Student Management System</h1>
+ 		<div class = "row" style=" padding-left:37em!important">
+			<img th:src="@{images/img1.png}" alt="Media Resource" class="ml-2 mt-1" style="margin-left: -33.5rem!important; margin-top: 3.25rem!important;">
+		</div>
+ 	  <div class = "row mt-1 pl-3" style="margin-top: 5em!important; padding-left:16em!important">
+ 	     <form th:action="@{/loginUser}" >
+	        <input type="submit" class="btn btn-info btn-lg" value="Login" />
 	    </form>
-	   
+	    <form th:action="@{/registerUser}" class="pl-5">
+	        <input type="submit" class="btn btn-info btn-lg" value="Register" />
+	    </form>
+ 	  
+ 	  </div>
+
 </div>
 </body>
 </html>

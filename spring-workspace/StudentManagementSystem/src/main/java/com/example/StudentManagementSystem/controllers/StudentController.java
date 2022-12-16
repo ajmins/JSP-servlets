@@ -2,6 +2,8 @@ package com.example.StudentManagementSystem.controllers;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +38,11 @@ public class StudentController {
 	
 	
 	@GetMapping("/home")
-	public String HomePage() {
+	public String HomePage(@ModelAttribute("fa")String userName, Model model,HttpSession session) {
+		model.addAttribute("fa",userName);
+		System.out.println(userName);
+		String username = (String) session.getAttribute("username");
+		model.addAttribute("userName", username);
 		return "home";
 	}
 	

@@ -9,18 +9,22 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar bg-info text-white justify-content-end " style="background-color: #e3f2fd;">
+  <!-- Navbar content -->
 
+   	<a th:href ="@{/loginUser}" class="btn btn-light navbar-brand">Logout</a>
+</nav>
 
 <div class ="container">
-	
-		<div class = "row">
-			<h1> Student Management System</h1>
+		<div class = "row" style=" padding-left:24em!important">
+			<h2> Welcome <span th:text="${userName}">userName</span></h2>
+		</div>
+		<div class = "row" style=" padding-left:47em!important">
 			<img th:src="@{images/img1.png}" alt="Media Resource" class="ml-2 mt-1" style="margin-left: -33.5rem!important; margin-top: 3.25rem!important;">
 		</div>
-		<div class="mt-3" style="margin-top: 2.25rem!important;">
-		<a th:href ="@{/profile}" class="btn btn-primary">Profile</a>
-		<a th:href ="@{/students}" class="btn btn-primary">View Students</a>
-		<a th:href ="@{/loginUser}" class="btn btn-primary">Logout</a>
+		<div class="mt-3" style="margin-top: 5rem!important;padding-left:24em!important;">
+		<a th:href ="@{/profile}" class="btn btn-info">Profile</a>
+		<a th:href ="@{/students}" class="btn btn-info">View Students</a>
 		</div>
 
 </div>

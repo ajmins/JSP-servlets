@@ -9,7 +9,12 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<div class ="container"> <br>
+<nav class="navbar bg-info text-white justify-content-end " style="background-color: #e3f2fd;">
+  <!-- Navbar content -->
+
+</nav>
+
+<div class ="container justify-content-center"style="padding-left: 12.8rem!important; margin-top:5em"> <br>
 		<div class = "row mt-4" style="padding-left: 1.8rem!important;"> <br>
 			<h2>Login</h2>
 		</div>
@@ -23,7 +28,9 @@
 			    <label for="exampleInputPassword1">Password</label>
 			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" th:field="*{password}">
 			  </div>
-
+			<div class="form-group">
+			    	<a th:href ="@{/registerUser}" class="text-primary">Don't have an account? Register here!</a>
+			  </div>
 			  <button type="submit" class="btn btn-success">Submit</button>
 			</form>
 		</div>
